@@ -1,0 +1,104 @@
+.code_bg{
+    position: fixed;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 999;
+}
+.icon-login-bg{
+    background-image: url(../img/icon/loginicon.png);
+    background-repeat: no-repeat;
+}
+.code-con{
+    position: absolute;
+    top:30%;
+    width: 320px;
+    left: 50%;
+    margin-left: -160px;
+    background-color: #fff;
+    z-index: 1000;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.code-img{
+    margin: 5px 5px;
+    padding: 5px 5px;
+    background-color: #f5f6f7;
+}
+.code-img img{
+    display: block;
+}
+.icon-w-25{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px;
+}
+.icon-push{
+    cursor: pointer;
+    background-position: -149px -98px;
+}
+.code-push{
+    height: 25px;
+}
+.code-btn{
+    position: relative;
+    height: 30px;
+    text-align: center;
+    color: #999;
+    margin: 10px 10px;
+    box-sizing: border-box;
+    background-color: #f5f6f7;
+    border-radius: 15px;
+    border: 1px solid #e1e1e1;
+}
+.code-btn-m{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f5f6f7;
+    border: 1px solid #e1e1e1;
+    z-index: 5;
+    top:-8px;
+    left: 10px;
+    box-shadow: 0 0 3px #ccc;
+    cursor: pointer;
+    background-position: -63px 10px;
+}
+.code-btn-img{
+    background-image:url(../img/icon/arrow.png);
+    background-repeat: no-repeat;
+}
+.code-btn-img.active{
+    background-position: -134px 10px;
+}
+.code-span{
+    line-height: 28px;
+}
+.code-btn-img.error{
+    background-position: 8px 10px;
+}
+.code-img-con{
+    position: relative;
+}
+.code-mask{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 10;
+}
+.code-tip{
+    line-height: 30px;
+    padding-left: 10px;
+    font-size: 12px;
+    color: #999;
+}
+.code-tip-red{
+    color: red;
+}
+.code-tip-green{
+    color: green;
+}

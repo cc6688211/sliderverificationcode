@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>滑动验证码</title>
+<link rel="stylesheet" href="/css/slide.css">
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/jquery.lgyslide.js"></script>
+</head>
+<body>
+	<div id="imgscode"></div>
+	<script>
+		$(function() {
+			setTimeout(function() {
+				createcode();
+			}, 1000)
+		}());
+		//显示验证码
+		function createcode() {
+			$
+					.ajax({
+						type : 'POST',
+						url : '/getPic',
+						dataType : 'json',
+						success : function(data) {
+							if (data != null) {
+								$("#imgscode")
+										.imgcode(
+												{
+													frontimg : 'data:image/png;base64,'
+															+ data.slidingImage,
+													backimg : 'data:image/png;base64,'
+															+ data.backImage,
+													yHeight : data.yHeight,
+													refreshcallback : function() {
+														//刷新验证码
+														createcode();
+													},
+													callback : function(msg) {
+														console.log(msg);
+														var $this = this;
+														$
+																.ajax({
+																	type : 'POST',
+																	url : '/checkcapcode',
+																	data : {
+																		xpos : msg.xpos,
+																		capcode : data.capcode
+																	},
+																	dataType : 'json',
+																	success : function(
+																			data) {
+																		console
+																				.log(data)
+																		if (data.code == 1) {
+																			$this
+																					.getsuccess();
+																			setTimeout(
+																					function() {
+																						alert("验证成功，可以做自己的操作了!");
+																					},
+																					800);
+																		} else {
+																			if (data.code == 4) {
+																				createcode();
+																			} else if (data.code == 3) {
+																				$this
+																						.getfail("验证码过期,请刷新");
+																			} else {
+																				$this
+																						.getfail("验证不通过");
+																			}
+																		}
+
+																	}
+																})
+													}
+												});
+							}
+						}
+					})
+		}
+	</script>
+</body>
+</html>
+
