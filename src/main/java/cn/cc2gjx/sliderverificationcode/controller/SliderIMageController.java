@@ -78,10 +78,11 @@ public class SliderIMageController {
 
     @GetMapping
     @RequestMapping("checkcapcode")
-    public @ResponseBody Map < String, Object > checkcapcode(@RequestParam("xpos") int xpos,
+    public @ResponseBody Map < String, Object > checkcapcode(@RequestParam("xpos") String sxpos,
             @RequestParam("capcode") String capcode, HttpServletRequest request) throws IOException {
         Map < String, Object > result = new HashMap < String, Object >();
         Integer x = cacheg.getIfPresent(capcode);
+        Integer xpos = (int)Float.parseFloat(sxpos);
         if (x == null) {
             // 超期
             result.put("code", 3);
